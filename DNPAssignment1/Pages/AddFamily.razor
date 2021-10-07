@@ -1,0 +1,34 @@
+﻿@page "/AddFamily"
+
+@using Models
+@using FileData
+@inject FileContext FamilyData
+
+@inject NavigationManager NavigationManager
+
+<h3>
+    Add A Family
+</h3>
+<EditForm Model="@family" OnValidSubmit="@AddNewFamily">
+    <DataAnnotationsValidator/> <ValidationSummary/>
+    <div class="form-group"> House Number<br/> <InputNumber @bind-Value="family.HouseNumber"/> </div>
+    <div class="form-group"> Street Name:<br/> <InputTextArea rows="2" @bind-Value="family.StreetName"/> </div>
+    
+    <p class="actions">
+        <button class="btn btn-outline-dark" type="submit">Add family</button>
+    </p>
+</EditForm>
+
+@code {
+    private Family family = new ();
+
+    private void AddNewFamily()
+    {
+        FamilyData.Families.Add(family);
+
+        Console.WriteLine(family);
+        
+        NavigationManager.NavigateTo("/AddFamily");
+    }
+
+}

@@ -1,0 +1,53 @@
+﻿@page "/Families"
+
+@using FileData
+@using Models
+@inject FileContext FileContext
+
+<h1>Weather forecast</h1>
+
+<p>This component demonstrates fetching data from a service.</p>
+
+@if (_families == null)
+{
+    <p>
+        <em>Loading...</em>
+    </p>
+}
+else
+{
+    <table class="table">
+        <thead>
+        <tr>
+            <th>House number</th>
+            <th>Street name</th>
+            <th>Family name</th>
+        </tr>
+        </thead>
+        <tbody>
+
+        @foreach (var family in _families)
+                {
+                    <tr>
+                        <td>@family.HouseNumber</td>
+                        <td>@family.StreetName</td>
+                        <td>@(family.Adults.Any() ? family.Adults.First().LastName : "No adults added")  </td>
+                    </tr>
+                }
+        
+        </tbody>
+    </table>
+}
+
+@code {
+    
+    private IList<Family> _families;
+    
+    protected override async Task OnInitializedAsync()
+    {
+        _families = FileContext.Families;
+    }
+
+    
+    
+}
