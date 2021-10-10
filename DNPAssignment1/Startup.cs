@@ -33,6 +33,9 @@ namespace DNPAssignment1
             services.AddScoped<IUserService, InMemoryUserService>();
             services.AddScoped<AuthenticationStateProvider, CustomAuthenticationStateProvider>();
             SetUpPolicies(services);
+            
+           
+            
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

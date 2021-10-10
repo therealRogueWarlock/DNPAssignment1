@@ -3,19 +3,22 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Net.Http;
 using System.Threading.Tasks;
+using FileData;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
+using Models;
 
 namespace DNPAssignment1
 {
     public class Program
     {
-        
-        private static readonly HttpClient client = new HttpClient();
+
         public async static Task Main(string[] args)
         {
+
+           
 
             CreateHostBuilder(args).Build().Run();
         }

@@ -27,13 +27,38 @@ else
         <tbody>
 
         @foreach (var family in _families)
-                {
-                    <tr>
-                        <td>@family.HouseNumber</td>
-                        <td>@family.StreetName</td>
-                        <td>@(family.Adults.Any() ? family.Adults.First().LastName : "No adults added")  </td>
-                    </tr>
-                }
+        {
+            <tr>
+                <td>@family.HouseNumber</td>
+                <td>@family.StreetName</td>
+                <td>@family.GetFamilyName()</td>
+                        
+                @* <td>@(family.Adults.Any() ? family.Adults.First().LastName : "No adults added")  </td> *@
+            </tr>
+        }
+        
+        </tbody>
+    </table>
+    
+    <table class="table">
+        <thead>
+        <tr>
+            <th>JobTitle</th>
+            <th>First name</th>
+            <th>Family name</th>
+        </tr>
+        </thead>
+        <tbody>
+
+        @foreach (Adult adult in _adults)
+        {
+            <tr>
+                <td>@adult.JobTitle.JobTitle</td>
+                <td>@adult.FirstName</td>
+                <td>@adult.LastName</td>
+                
+            </tr>
+        }
         
         </tbody>
     </table>
@@ -42,9 +67,12 @@ else
 @code {
     
     private IList<Family> _families;
+
+    private IList<Adult> _adults;
     
     protected override async Task OnInitializedAsync()
     {
+        _adults = FileContext.Adults;
         _families = FileContext.Families;
     }
 
