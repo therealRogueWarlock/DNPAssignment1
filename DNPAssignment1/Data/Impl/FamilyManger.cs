@@ -1,18 +1,29 @@
-﻿namespace Blazor_Authentication.Data.Impl
+﻿using FileData;
+using Models;
+
+namespace Blazor_Authentication.Data.Impl
 {
     public class FamilyManger : IFamilyManager
     {
-        
-        public void AddFamily()
+
+        private FileContext _fileContext;
+
+        public FamilyManger()
         {
-            throw new System.NotImplementedException();
+            _fileContext = new FileContext();
+        }
+        
+        public void AddFamily(Family family)
+        {
+            _fileContext.Families.Add(family);
+            _fileContext.SaveChanges();
         }
 
-        public void RemoveFamily()
+        public void RemoveFamily(Family family)
         {
-            throw new System.NotImplementedException();
+            _fileContext.Families.Remove(family);
+            _fileContext.SaveChanges();
         }
-        
         
     }
 }

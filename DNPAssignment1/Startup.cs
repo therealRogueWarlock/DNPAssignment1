@@ -28,13 +28,12 @@ namespace DNPAssignment1
         {
             services.AddRazorPages();
             services.AddServerSideBlazor();
-            // todo: FileContext: maybe scoped ?
-            services.AddSingleton<FileContext>();
+            services.AddScoped<IFamilyManager, FamilyManger>();
             services.AddScoped<IUserService, InMemoryUserService>();
             services.AddScoped<AuthenticationStateProvider, CustomAuthenticationStateProvider>();
+            
             SetUpPolicies(services);
             
-           
             
         }
 
