@@ -1,154 +1,16 @@
 [
   {
-    "FamilyId": 1, 
     "StreetName": "Bay Avenue",
     "HouseNumber": 1,
-    "Adults": [
-      {
-        "Job": {
-          "JobTitle": "Mascot",
-          "Salary": 99821
-        },
-        "Id": 0,
-        "FirstName": "Yasmine",
-        "LastName": "Baxter",
-        "HairColor": "Black",
-        "EyeColor": "Brown",
-        "Age": 58,
-        "Weight": 39.8,
-        "Height": 174,
-        "Sex": "F"
-      }
-    ],
+    "FamilyId": 1,
+    "Adults": [],
     "Children": [],
     "Pets": []
   },
   {
-    "FamilyId": 2, 
-    "StreetName": "Innovation Avenue",
-    "HouseNumber": 1,
-    "Adults": [
-      {
-        "Job": {
-          "JobTitle": "Front End Web Developer",
-          "Salary": 66408
-        },
-        "Id": 1,
-        "FirstName": "Lyla",
-        "LastName": "Humphrey",
-        "HairColor": "Black",
-        "EyeColor": "Brown",
-        "Age": 36,
-        "Weight": 64.8,
-        "Height": 147,
-        "Sex": "F"
-      },
-      {
-        "Job": {
-          "JobTitle": "Business Development Manager",
-          "Salary": 71456
-        },
-        "Id": 2,
-        "FirstName": "Samara",
-        "LastName": "Humphrey",
-        "HairColor": "Black",
-        "EyeColor": "Brown",
-        "Age": 34,
-        "Weight": 37,
-        "Height": 145,
-        "Sex": "F"
-      }
-    ],
-    "Children": [
-      {
-        "Interests": [
-          {
-            "Type": "Board Games",
-            "Description": "Boardgaming like a family"
-          },
-          {
-            "Type": "Archery",
-            "Description": "Old sport with bow and arrow"
-          },
-          {
-            "Type": "Gaming",
-            "Description": "#PCMASTERRACE"
-          }
-        ],
-        "Pets": [],
-        "Id": 1,
-        "FirstName": "Frederick",
-        "LastName": "Humphrey",
-        "HairColor": "Black",
-        "EyeColor": "Amber",
-        "Age": 10,
-        "Weight": 35,
-        "Height": 155,
-        "Sex": "M"
-      },
-      {
-        "Interests": [
-          {
-            "Type": "Board Games",
-            "Description": "Boardgaming like a family"
-          },
-          {
-            "Type": "Ultimate",
-            "Description": "Chasing flying saucers"
-          }
-        ],
-        "Pets": [],
-        "Id": 2,
-        "FirstName": "Leopold",
-        "LastName": "Humphrey",
-        "HairColor": "Black",
-        "EyeColor": "Blue",
-        "Age": 6,
-        "Weight": 85.1,
-        "Height": 130,
-        "Sex": "M"
-      },
-      {
-        "Interests": [
-          {
-            "Type": "Drawing",
-            "Description": "Or doodling"
-          },
-          {
-            "Type": "Reading",
-            "Description": "Expand your horizon "
-          },
-          {
-            "Type": "Paper Plane Flying",
-            "Description": "Just crumble a paper into a ball and throw it"
-          },
-          {
-            "Type": "Harry Potter",
-            "Description": "Slightly more narrow than book reading"
-          },
-          {
-            "Type": "Gaming",
-            "Description": "#PCMASTERRACE"
-          }
-        ],
-        "Pets": [],
-        "Id": 3,
-        "FirstName": "Chiara",
-        "LastName": "Humphrey",
-        "HairColor": "Black",
-        "EyeColor": "Brown",
-        "Age": 15,
-        "Weight": 84.405,
-        "Height": 183,
-        "Sex": "F"
-      }
-    ],
-    "Pets": []
-  },
-  {
-    "FamilyId": 3, 
     "StreetName": "William Street",
     "HouseNumber": 1,
+    "FamilyId": 3,
     "Adults": [
       {
         "Job": {
@@ -265,9 +127,9 @@
     ]
   },
   {
-    "FamilyId": 4, 
     "StreetName": "Mitch Cromwood Avenue",
     "HouseNumber": 1,
+    "FamilyId": 4,
     "Adults": [
       {
         "Job": {
@@ -416,9 +278,9 @@
     "Pets": []
   },
   {
-    "FamilyId": 5, 
     "StreetName": "Elgin Avenue",
     "HouseNumber": 1,
+    "FamilyId": 5,
     "Adults": [
       {
         "Job": {
@@ -604,9 +466,9 @@
     "Pets": []
   },
   {
-    "FamilyId": 6, 
     "StreetName": "Railway Street",
     "HouseNumber": 1,
+    "FamilyId": 6,
     "Adults": [
       {
         "Job": {
@@ -773,9 +635,9 @@
     ]
   },
   {
-    "FamilyId": 7, 
     "StreetName": "Airport Avenue",
     "HouseNumber": 1,
+    "FamilyId": 7,
     "Adults": [
       {
         "Job": {
@@ -886,9 +748,9 @@
     ]
   },
   {
-    "FamilyId": 8, 
     "StreetName": "Sycamore Drive",
     "HouseNumber": 1,
+    "FamilyId": 8,
     "Adults": [
       {
         "Job": {
@@ -967,9 +829,9 @@
     "Pets": []
   },
   {
-    "FamilyId": 9, 
     "StreetName": "Hazlett Avenue",
     "HouseNumber": 1,
+    "FamilyId": 9,
     "Adults": [
       {
         "Job": {
@@ -1130,9 +992,9 @@
     "Pets": []
   },
   {
-    "FamilyId": 10, 
     "StreetName": "Easy Street",
     "HouseNumber": 1,
+    "FamilyId": 10,
     "Adults": [
       {
         "Job": {
@@ -1195,5 +1057,13 @@
       }
     ],
     "Pets": []
+  },
+  {
+    "StreetName": "Vejvej",
+    "HouseNumber": 12,
+    "FamilyId": 0,
+    "Adults": [],
+    "Children": null,
+    "Pets": null
   }
 ]

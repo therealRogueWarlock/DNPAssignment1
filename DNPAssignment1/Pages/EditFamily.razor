@@ -1,6 +1,7 @@
 ﻿@page "/EditFamily/{FamilyId:int}"
 @using Blazor_Authentication.Data
 @using Models
+@using AdultContentComponent
 @inject IFamilyManager familyManager
 @inject NavigationManager navigationManager
 
@@ -58,36 +59,40 @@ else
             <br/>
             <InputNumber @bind-Value="AdultToAdd.Age"/>
         </div>
-    
+
         <div class="form-group">
             Weight:
             <br/>
             <InputNumber @bind-Value="AdultToAdd.Weight"/>
         </div>
-        
+
         <div class="form-group">
-                            Height:
-                            <br/>
-                            <InputNumber @bind-Value="AdultToAdd.Height"/>
-                        </div>
+            Height:
+            <br/>
+            <InputNumber @bind-Value="AdultToAdd.Height"/>
+        </div>
         <div class="form-group">
             SEX(what ever you like):
             <br/>
-            <InputNumber @bind-Value="AdultToAdd.Sex"/>
+            <InputText @bind-Value="AdultToAdd.Sex"/>
         </div>
-        
+
         <div class="form-group">
-                    Job title:
-                    <br/>
-                    <InputTextArea rows="1" @bind-Value="AdultToAdd.Job.JobTitle"/>
-                </div>
+            Job title:
+            <br/>
+            <InputTextArea rows="1" @bind-Value="AdultToAdd.Job.JobTitle"/>
+        </div>
 
         <div class="form-group"> Job Salary:<br/> <InputNumber @bind-Value="AdultToAdd.Job.Salary"/> </div>
-        
+
 
         <p class="actions">
-            <button class="btn btn-outline-dark" type="submit">Save</button>
+            <button class="btn btn-outline-dark" type="submit">Add</button>
         </p>
+
+        <AdultContent _adults="@_adultsInFamily"/>
+
+
     </EditForm>
 }
 
@@ -100,13 +105,14 @@ else
     private int HouseNumber { get; set; }
 
     private Family familyToEdit;
-
+    private IList<Adult> _adultsInFamily;
     private Adult AdultToAdd;
 
     protected override async Task OnInitializedAsync()
     {
         familyToEdit = familyManager.GetFamily(FamilyId);
-        AdultToAdd = familyToEdit.Adults[0]; // toDO: kigerdsajkdsf 
+        _adultsInFamily = familyToEdit.Adults;
+        AdultToAdd = new Adult();
     }
 
     private void Save()
@@ -117,8 +123,13 @@ else
 
     private void AddAdult()
     {
-        familyToEdit.Adults.Add(AdultToAdd);
-        AdultToAdd = new Adult();
+        if (AdultToAdd != null)
+        {
+            Console.WriteLine($"Adding {AdultToAdd}");
+            familyToEdit.Adults.Add(AdultToAdd);
+            AdultToAdd = new Adult();
+            
+        }
     }
 
 }
