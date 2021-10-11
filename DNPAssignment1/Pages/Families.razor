@@ -1,6 +1,5 @@
 ﻿@page "/Families"
 
-@using FileData
 @using Models
 @using Blazor_Authentication.Data
 @inject IFamilyManager familyManager
@@ -10,10 +9,24 @@
 
 <p>This component is very cool, and has a list of families and their addresses!</p>
 
-@if (_families == null)
+<h1>Filter Families</h1>
+<p>
+    Filter by Street Name: <input type="text" @oninput="@((arg) => FilterByStreetName(arg))" style="width:50px"/>
+</p>
+<p>
+    Filter by House Number: <input type="number" @oninput="@((arg) => FilterByHouseNumber(arg))" style="width:50px"/>
+</p>
+
+@if (_familiesToShow == null)
 {
     <p>
         <em>Loading...</em>
+    </p>
+}
+else if (!_familiesToShow.Any())
+{
+    <p>
+        <em>No families exist, please add families to our beautiful system</em>
     </p>
 }
 else
@@ -32,7 +45,7 @@ else
         </thead>
         <tbody>
 
-        @foreach (var family in _families)
+        @foreach (var family in _familiesToShow)
         {
             <tr>
                 <td>@family.HouseNumber</td>
@@ -47,7 +60,7 @@ else
                         </button>
                     </td>
                     <td>
-                        <button @onclick="@(() => Edit(family))">
+                        <button @onclick="@(() => EditFamily(family))">
                             <i class="oi oi-pencil" style="color:turquoise"/>
                         </button>
                     </td>
@@ -55,9 +68,20 @@ else
                 @* <td>@(family.Adults.Any() ? family.Adults.First().LastName : "No adults added")  </td> *@
             </tr>
         }
-
         </tbody>
     </table>
+    
+    
+    <h1>Filter Adults</h1>
+    <p>
+        Filter by Family Name: <input type="text" @oninput="@((arg) => FilterByFamilyName(arg))" style="width:50px"/>
+    </p>
+    <p>
+        Filter by First Name: <input type="text" @oninput="@((arg) => FilterByFirstName(arg))" style="width:50px"/>
+    </p>
+    <p>
+        Filter by Job Name: <input type="text" @oninput="@((arg) => FilterByJobTitle(arg))" style="width:50px"/>
+    </p>
 
     <table class="table">
         <thead>
@@ -69,16 +93,15 @@ else
         </thead>
         <tbody>
 
-        <!--/*
-        @foreach (Adult adult in _adults)
+        
+        @foreach (var adult in _adultsToShow)
         {
             <tr>
-                <td>@adult.JobTitle.JobTitle</td>
+                <td>@adult.Job.JobTitle</td>
                 <td>@adult.FirstName</td>
                 <td>@adult.LastName</td>
             </tr>
         }
-        */-->
 
         </tbody>
     </table>
@@ -87,19 +110,131 @@ else
 @code {
 
     private IList<Family> _families;
+    private IList<Family> _familiesToShow;
 
     private IList<Adult> _adults;
+    private IList<Adult> _adultsToShow;
+
+    private string filterByStreetName;
+    private int? filterByHouseNumber;
 
     protected override async Task OnInitializedAsync()
     {
     //_adults = familyManager.Adults;
         _families = familyManager.GetFamilies();
+        _familiesToShow = _families;
+
+        _adults = familyManager.GetAdults();
+        _adultsToShow = _adults;
     }
 
-    private void Edit(Family family)
+    private void EditFamily(Family family)
     {
-        navigationManager.NavigateTo($"Edit/{family.StreetName}/{family.HouseNumber}");
+        navigationManager.NavigateTo($"EditFamily/{family.FamilyId}");
     }
 
+
+    private void FilterByStreetName(ChangeEventArgs changeEventArgs)
+    {
+        try
+        {
+            filterByStreetName = changeEventArgs.Value.ToString();
+        }
+        catch (Exception e)
+        {
+            Console.WriteLine("Fuck jeg fejlede i filterByStreetName :((");
+        }
+
+        ExecuteFilterFamilies();
+    }
+
+    private void FilterByHouseNumber(ChangeEventArgs changeEventArgs)
+    {
+        filterByHouseNumber = null;
+
+        try
+        {
+            filterByHouseNumber = int.Parse(changeEventArgs.Value.ToString());
+        }
+        catch (Exception e)
+        {
+            Console.WriteLine("Fuck jeg fejlede i filterByHouseNumber");
+        }
+
+        ExecuteFilterFamilies();
+    }
+
+    private void ExecuteFilterFamilies()
+    {
+        _familiesToShow = _families.Where(t =>
+            (filterByHouseNumber != null && t.HouseNumber == filterByHouseNumber || filterByHouseNumber == null) &&
+            (filterByStreetName != null && t.StreetName.ToLower().Contains(filterByStreetName.ToLower()) || filterByStreetName == null)).ToList();
+    }
+    
+    
+    
+    
+    
+    
+    
+
+    
+    
+    
+    private string filterByJobTitle;
+    private string filterByFirstName;
+    private string filterByLastName;
+    
+    private void FilterByJobTitle(ChangeEventArgs changeEventArgs)
+    {
+        try
+        {
+            filterByJobTitle = changeEventArgs.Value.ToString();
+        }
+        catch (Exception e)
+        {
+            Console.WriteLine("Fuck jeg fejlede i filterByStreetName :((");
+        }
+
+        ExecuteFilterAdults();
+    }
+    
+    private void FilterByFirstName(ChangeEventArgs changeEventArgs)
+    {
+        try
+        {
+            filterByFirstName = changeEventArgs.Value.ToString();
+        }
+        catch (Exception e)
+        {
+            Console.WriteLine("Fuck jeg fejlede i filterByStreetName :((");
+        }
+
+        ExecuteFilterAdults();
+    }
+    
+    private void FilterByFamilyName(ChangeEventArgs changeEventArgs)
+    {
+        try
+        {
+            filterByLastName = changeEventArgs.Value.ToString();
+        }
+        catch (Exception e)
+        {
+            Console.WriteLine("Fuck jeg fejlede i filterByStreetName :((");
+        }
+
+        ExecuteFilterAdults();
+    }
+    
+    
+    
+    private void ExecuteFilterAdults()
+    {
+        _adultsToShow = _adults.Where(f =>
+            (filterByLastName != null && f.LastName.ToLower().Contains(filterByLastName.ToLower()) || filterByLastName == null) &&
+            (filterByFirstName != null && f.FirstName.ToLower().Contains(filterByFirstName.ToLower()) || filterByFirstName == null) &&
+            (filterByJobTitle != null && f.Job.JobTitle.ToLower().Contains(filterByJobTitle.ToLower()) || filterByJobTitle == null)).ToList();
+    }
 
 }
