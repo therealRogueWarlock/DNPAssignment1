@@ -4,6 +4,7 @@
 @using Models
 @using Blazor_Authentication.Data
 @inject IFamilyManager familyManager
+@inject NavigationManager navigationManager;
 
 <h1>Family Forecast!</h1>
 
@@ -23,6 +24,10 @@ else
             <th>House number</th>
             <th>Street name</th>
             <th>Family name</th>
+            <AuthorizeView>
+                <th>Delete</th>
+                <th>Edit</th>
+            </AuthorizeView>
         </tr>
         </thead>
         <tbody>
@@ -33,19 +38,27 @@ else
                 <td>@family.HouseNumber</td>
                 <td>@family.StreetName</td>
                 <td>@family.GetFamilyName()</td>
-                <td>
-                    <button @onclick="@(() => familyManager.RemoveFamily(family))">
-                        <i class="oi oi-trash" style="color:green"/>
-                    </button>
-                </td>
-                        
+
+                <AuthorizeView>
+                    <td>
+                        <button @onclick="@(() => familyManager.RemoveFamily(family))">
+                            @* FIXME: Hører jeg til her? :( *@
+                            <i class="oi oi-trash" style="color:green"/>
+                        </button>
+                    </td>
+                    <td>
+                        <button @onclick="@(() => Edit(family))">
+                            <i class="oi oi-pencil" style="color:turquoise"/>
+                        </button>
+                    </td>
+                </AuthorizeView>
                 @* <td>@(family.Adults.Any() ? family.Adults.First().LastName : "No adults added")  </td> *@
             </tr>
         }
-        
+
         </tbody>
     </table>
-    
+
     <table class="table">
         <thead>
         <tr>
@@ -72,16 +85,21 @@ else
 }
 
 @code {
-    
+
     private IList<Family> _families;
 
     private IList<Adult> _adults;
-    
+
     protected override async Task OnInitializedAsync()
     {
-        //_adults = familyManager.Adults;
+    //_adults = familyManager.Adults;
         _families = familyManager.GetFamilies();
     }
-    
-    
+
+    private void Edit(Family family)
+    {
+        navigationManager.NavigateTo($"Edit/{family.StreetName}/{family.HouseNumber}");
+    }
+
+
 }

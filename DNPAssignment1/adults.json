@@ -1,9 +1,6 @@
 [
   {
-    "JobTitle": {
-      "JobTitle": "Mascot",
-      "Salary": 99821
-    },
+    "JobTitle": null,
     "Id": 0,
     "FirstName": "Yasmine",
     "LastName": "Baxter",
@@ -15,10 +12,7 @@
     "Sex": "F"
   },
   {
-    "JobTitle": {
-      "JobTitle": "Front End Web Developer",
-      "Salary": 66408
-    },
+    "JobTitle": null,
     "Id": 1,
     "FirstName": "Lyla",
     "LastName": "Humphrey",
@@ -30,10 +24,7 @@
     "Sex": "F"
   },
   {
-    "JobTitle": {
-      "JobTitle": "Business Development Manager",
-      "Salary": 71456
-    },
+    "JobTitle": null,
     "Id": 2,
     "FirstName": "Samara",
     "LastName": "Humphrey",
@@ -45,10 +36,7 @@
     "Sex": "F"
   },
   {
-    "JobTitle": {
-      "JobTitle": "Skin Care Specialist",
-      "Salary": 20545
-    },
+    "JobTitle": null,
     "Id": 3,
     "FirstName": "Chaya",
     "LastName": "Mcclure",
@@ -60,10 +48,7 @@
     "Sex": "F"
   },
   {
-    "JobTitle": {
-      "JobTitle": "Vice Principal",
-      "Salary": 72901
-    },
+    "JobTitle": null,
     "Id": 4,
     "FirstName": "Ophelia",
     "LastName": "Nathan",
@@ -75,10 +60,7 @@
     "Sex": "F"
   },
   {
-    "JobTitle": {
-      "JobTitle": "Teacher",
-      "Salary": 91588
-    },
+    "JobTitle": null,
     "Id": 5,
     "FirstName": "Soham",
     "LastName": "Fitzgerald",
@@ -90,10 +72,7 @@
     "Sex": "M"
   },
   {
-    "JobTitle": {
-      "JobTitle": "Service Advisor",
-      "Salary": 72532
-    },
+    "JobTitle": null,
     "Id": 6,
     "FirstName": "Anastasia",
     "LastName": "Fitzgerald",
@@ -105,10 +84,7 @@
     "Sex": "F"
   },
   {
-    "JobTitle": {
-      "JobTitle": "Janitor",
-      "Salary": 61437
-    },
+    "JobTitle": null,
     "Id": 7,
     "FirstName": "Cataleya",
     "LastName": "Mcintyre",
@@ -120,10 +96,7 @@
     "Sex": "F"
   },
   {
-    "JobTitle": {
-      "JobTitle": "Office Clerk",
-      "Salary": 41332
-    },
+    "JobTitle": null,
     "Id": 8,
     "FirstName": "Andi",
     "LastName": "Wells",
@@ -135,10 +108,7 @@
     "Sex": "F"
   },
   {
-    "JobTitle": {
-      "JobTitle": "Writer",
-      "Salary": 63392
-    },
+    "JobTitle": null,
     "Id": 9,
     "FirstName": "Genevieve",
     "LastName": "Cruz",
@@ -150,10 +120,7 @@
     "Sex": "F"
   },
   {
-    "JobTitle": {
-      "JobTitle": "Casino Host",
-      "Salary": 35445
-    },
+    "JobTitle": null,
     "Id": 10,
     "FirstName": "Lester",
     "LastName": "Cruz",
@@ -165,10 +132,7 @@
     "Sex": "M"
   },
   {
-    "JobTitle": {
-      "JobTitle": "Nurse",
-      "Salary": 36813
-    },
+    "JobTitle": null,
     "Id": 11,
     "FirstName": "Zahra",
     "LastName": "Salt",
@@ -180,10 +144,7 @@
     "Sex": "F"
   },
   {
-    "JobTitle": {
-      "JobTitle": "Web Administrator",
-      "Salary": 44759
-    },
+    "JobTitle": null,
     "Id": 12,
     "FirstName": "Zavier",
     "LastName": "Huffman",
@@ -195,10 +156,7 @@
     "Sex": "M"
   },
   {
-    "JobTitle": {
-      "JobTitle": "Science Teacher",
-      "Salary": 55346
-    },
+    "JobTitle": null,
     "Id": 13,
     "FirstName": "Arley",
     "LastName": "Vaughn",
@@ -210,10 +168,7 @@
     "Sex": "M"
   },
   {
-    "JobTitle": {
-      "JobTitle": "Call Center Agent",
-      "Salary": 20308
-    },
+    "JobTitle": null,
     "Id": 14,
     "FirstName": "Isiah",
     "LastName": "Esparza",
