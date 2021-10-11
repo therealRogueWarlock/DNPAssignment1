@@ -10,16 +10,16 @@
 <AuthorizeView>
     <NotAuthorized>
         <div
-            class="form-group">
-            <label>User name:</label> <input type="text" placeholder="user name" @bind-value="username"/>
+            class="form-group my-auto">
+            <label>Username:</label> <input type="text" placeholder="username" @bind-value="username"/>
         </div>
-        <div class="form-group">
-            <label>Password</label> <input type="password" placeholder="password" @bind-value="password"/>
+        <div class="form-group my-auto">
+            <label>Password:</label> <input type="password" placeholder="password" @bind-value="password"/>
         </div>
-        <div style="color:red">@errorMessage</div> <a href="" @onclick="PerformLogin"> Login </a>
+        <div style="color:red" class="my-auto">@errorMessage</div> <a href="" @onclick="PerformLogin">Login</a>
     </NotAuthorized>
     <Authorized>
-        <a href="" @onclick="PerformLogout"> Log out </a>
+        <a href="" @onclick="PerformLogout">Logout:</a>
     </Authorized>
 </AuthorizeView>
 

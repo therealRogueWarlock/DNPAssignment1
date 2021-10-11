@@ -1,8 +1,8 @@
 ﻿@page "/AddFamily"
 
 @using Models
-@using FileData
-@inject FileContext FamilyData
+@using Blazor_Authentication.Data
+@inject IFamilyManager familyManager
 
 @inject NavigationManager NavigationManager
 
@@ -25,11 +25,11 @@
 
     private void AddNewFamily()
     {
-        FamilyData.Families.Add(family);
+        familyManager.AddFamily(family);
 
         Console.WriteLine(family);
         
-        NavigationManager.NavigateTo("/AddFamily");
+        NavigationManager.NavigateTo("/Families");
         
     }
     

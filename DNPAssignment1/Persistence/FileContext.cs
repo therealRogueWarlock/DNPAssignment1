@@ -11,12 +11,11 @@ namespace FileData
         public IList<Family> Families { get; private set; }
         public IList<Adult> Adults { get; private set; }
 
-        private readonly string familiesFile = "families.json";
-        private readonly string adultsFile = "adults.json";
+        private readonly string familiesFile = "C:/Users/N_i_v/RiderProjects/DNPAssignment1/DNPAssignment1/families.json";
+        private readonly string adultsFile = "C:/Users/N_i_v/RiderProjects/DNPAssignment1/DNPAssignment1/adults.json";
 
         public FileContext()
         {
-            
             Families = File.Exists(familiesFile) ? ReadData<Family>(familiesFile) : new List<Family>();
             Adults = File.Exists(adultsFile) ? ReadData<Adult>(adultsFile) : new List<Adult>();
         }
@@ -25,7 +24,6 @@ namespace FileData
         {
             using (var jsonReader = File.OpenText(s))
             {
-                
                 return JsonSerializer.Deserialize<List<T>>(jsonReader.ReadToEnd());
             }
         }

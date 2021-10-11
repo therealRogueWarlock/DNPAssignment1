@@ -2,11 +2,12 @@
 
 @using FileData
 @using Models
-@inject FileContext FileContext
+@using Blazor_Authentication.Data
+@inject IFamilyManager familyManager
 
-<h1>Weather forecast</h1>
+<h1>Family Forecast!</h1>
 
-<p>This component demonstrates fetching data from a service.</p>
+<p>This component is very cool, and has a list of families and their addresses!</p>
 
 @if (_families == null)
 {
@@ -32,6 +33,11 @@ else
                 <td>@family.HouseNumber</td>
                 <td>@family.StreetName</td>
                 <td>@family.GetFamilyName()</td>
+                <td>
+                    <button @onclick="@(() => familyManager.RemoveFamily(family))">
+                        <i class="oi oi-trash" style="color:green"/>
+                    </button>
+                </td>
                         
                 @* <td>@(family.Adults.Any() ? family.Adults.First().LastName : "No adults added")  </td> *@
             </tr>
@@ -50,6 +56,7 @@ else
         </thead>
         <tbody>
 
+        <!--/*
         @foreach (Adult adult in _adults)
         {
             <tr>
@@ -58,7 +65,8 @@ else
                 <td>@adult.LastName</td>
             </tr>
         }
-        
+        */-->
+
         </tbody>
     </table>
 }
@@ -71,8 +79,8 @@ else
     
     protected override async Task OnInitializedAsync()
     {
-        _adults = FileContext.Adults;
-        _families = FileContext.Families;
+        //_adults = familyManager.Adults;
+        _families = familyManager.GetFamilies();
     }
     
     

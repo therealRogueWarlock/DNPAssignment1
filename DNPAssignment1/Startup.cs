@@ -28,7 +28,7 @@ namespace DNPAssignment1
         {
             services.AddRazorPages();
             services.AddServerSideBlazor();
-            services.AddScoped<IFamilyManager, FamilyManger>();
+            services.AddScoped<IFamilyManager, FamilyManager>();
             services.AddScoped<IUserService, InMemoryUserService>();
             services.AddScoped<AuthenticationStateProvider, CustomAuthenticationStateProvider>();
             
