@@ -19,14 +19,17 @@
 </EditForm>
 
 @code {
+    
     private Family family = new();
 
     private void AddNewFamily()
     {
+        
         familyManager.AddFamily(family);
 
         Console.WriteLine(family);
 
         NavigationManager.NavigateTo("/Families");
     }
+    
 }

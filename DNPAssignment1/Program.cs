@@ -17,7 +17,6 @@ namespace DNPAssignment1
 
         public async static Task Main(string[] args)
         {
-            
             CreateHostBuilder(args).Build().Run();
         }
 

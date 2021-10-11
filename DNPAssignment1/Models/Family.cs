@@ -24,7 +24,7 @@ namespace Models
         {
             Adults = new List<Adult>();
         }
-
+        
         public string GetFamilyName()
         {
             string familyName = "";

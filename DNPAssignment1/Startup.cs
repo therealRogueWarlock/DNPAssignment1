@@ -72,7 +72,7 @@ namespace DNPAssignment1
                 
                 options.AddPolicy("IsLoggedIn", a => a.RequireAuthenticatedUser());
                 
-                /*
+                
                 options.AddPolicy("MustBeVIA", a => a.RequireAuthenticatedUser().RequireClaim("Domain", "via.dk"));
                 options.AddPolicy("SecurityLevel4", a => a.RequireAuthenticatedUser().RequireClaim("Level", "4", "5"));
                 options.AddPolicy("MustBeTeacher", a => a.RequireAuthenticatedUser().RequireClaim("Role", "Teacher"));
@@ -82,7 +82,7 @@ namespace DNPAssignment1
                     if (levelClaim == null) return false;
                     return int.Parse(levelClaim.Value) >= 2;
                 }));
-                */
+                
                 
             });
         }

@@ -41,8 +41,8 @@ else
             <th>First name</th>
             <th>Family name</th>
             <AuthorizeView>
-                <th>Delete</th>
                 <th>Edit</th>
+                <th>Delete</th>
             </AuthorizeView>
         </tr>
         </thead>
@@ -55,16 +55,18 @@ else
                 <td>@adult.Job.JobTitle</td>
                 <td>@adult.FirstName</td>
                 <td>@adult.LastName</td>
-                <td>
-                    <button @onclick="@(() => EditAdult(adult.Id))">
-                        <i class="oi oi-pencil" style="color:blue"/>
-                    </button>
-                </td>
-                <td>
-                    <button @onclick="@(() => RemoveAdult(adult.Id))">
-                        <i class="oi oi-trash" style="color:red"/>
-                    </button>
-                </td>
+                <AuthorizeView>
+                    <td>
+                        <button @onclick="@(() => EditAdult(adult.Id))">
+                            <i class="oi oi-pencil" style="color:blue"/>
+                        </button>
+                    </td>
+                    <td>
+                        <button @onclick="@(() => RemoveAdult(adult.Id))">
+                            <i class="oi oi-trash" style="color:red"/>
+                        </button>
+                    </td>
+                </AuthorizeView>
             </tr>
         }
 
@@ -142,12 +144,17 @@ else
     {
         navigationManager.NavigateTo($"EditAdult/{adultId}");
     }
-    
+
     private void RemoveAdult(int adultId)
     {
         familyManager.RemoveAdult(adultId);
+        
+        Adult adult = _adults.FirstOrDefault(adult =>
+            adult.Id == adultId);
+        
+        _adults.Remove(adult);
+        
     }
-    
-  
 
+    
 }

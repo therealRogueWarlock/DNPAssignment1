@@ -31,10 +31,8 @@ namespace Blazor_Authentication.Data.Impl
             return _fileContext.Families;
         }
 
-        public void Update(Family family)
+        public void Update()
         {
-            Family familyToUpdate = _fileContext.Families.First(f =>
-                f.FamilyId == family.FamilyId);
             _fileContext.SaveChanges();
         }
         
@@ -46,7 +44,18 @@ namespace Blazor_Authentication.Data.Impl
 
         public void RemoveAdult(int adultId)
         {
-            GetAdults().Remove(GetAdult(adultId));
+            foreach (Family family in _fileContext.Families)
+            {
+                Adult adult = family.Adults.FirstOrDefault(adult =>
+                    adult.Id == adultId);
+
+                if (adult != null)
+                {
+                    family.Adults.Remove(adult);
+                    break;
+                }
+            }
+            
             _fileContext.SaveChanges();
         }
 

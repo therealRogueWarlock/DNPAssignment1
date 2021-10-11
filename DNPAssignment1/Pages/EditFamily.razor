@@ -15,7 +15,8 @@ else
 {
     <EditForm Model="@familyToEdit" OnValidSubmit="@Save">
         <DataAnnotationsValidator/> <ValidationSummary/>
-        <div class="form-group"> Street Name:
+        <div class="form-group">
+            Street Name:
             <br/>
             <InputTextArea rows="4" @bind-Value="familyToEdit.StreetName"/>
         </div>
@@ -24,25 +25,100 @@ else
             <button class="btn btn-outline-dark" type="submit">Save</button>
         </p>
     </EditForm>
+
+    <EditForm Model="@AdultToAdd" OnValidSubmit="@AddAdult">
+        <DataAnnotationsValidator/> <ValidationSummary/>
+
+        <div class="form-group">
+            First Name:
+            <br/>
+            <InputTextArea rows="1" @bind-Value="AdultToAdd.FirstName"/>
+        </div>
+        <div class="form-group">
+            Last Name:
+            <br/>
+            <InputTextArea rows="1" @bind-Value="AdultToAdd.LastName"/>
+        </div>
+
+        <div class="form-group">
+            Hair color:
+            <br/>
+            <InputTextArea rows="1" @bind-Value="AdultToAdd.HairColor"/>
+        </div>
+
+        <div class="form-group">
+            Eye Color:
+            <br/>
+            <InputTextArea rows="1" @bind-Value="AdultToAdd.EyeColor"/>
+        </div>
+
+
+        <div class="form-group">
+            Age:
+            <br/>
+            <InputNumber @bind-Value="AdultToAdd.Age"/>
+        </div>
+    
+        <div class="form-group">
+            Weight:
+            <br/>
+            <InputNumber @bind-Value="AdultToAdd.Weight"/>
+        </div>
+        
+        <div class="form-group">
+                            Height:
+                            <br/>
+                            <InputNumber @bind-Value="AdultToAdd.Height"/>
+                        </div>
+        <div class="form-group">
+            SEX(what ever you like):
+            <br/>
+            <InputNumber @bind-Value="AdultToAdd.Sex"/>
+        </div>
+        
+        <div class="form-group">
+                    Job title:
+                    <br/>
+                    <InputTextArea rows="1" @bind-Value="AdultToAdd.Job.JobTitle"/>
+                </div>
+
+        <div class="form-group"> Job Salary:<br/> <InputNumber @bind-Value="AdultToAdd.Job.Salary"/> </div>
+        
+
+        <p class="actions">
+            <button class="btn btn-outline-dark" type="submit">Save</button>
+        </p>
+    </EditForm>
 }
 
 @code {
+
     [Parameter]
     public int FamilyId { get; set; }
-    
+
     private string StreetName { get; set; }
     private int HouseNumber { get; set; }
 
     private Family familyToEdit;
 
+    private Adult AdultToAdd;
+
     protected override async Task OnInitializedAsync()
     {
         familyToEdit = familyManager.GetFamily(FamilyId);
+        AdultToAdd = familyToEdit.Adults[0]; // toDO: kigerdsajkdsf 
     }
 
     private void Save()
     {
-        familyManager.Update(familyToEdit);
+        familyManager.Update();
         navigationManager.NavigateTo("/Families");
     }
+
+    private void AddAdult()
+    {
+        familyToEdit.Adults.Add(AdultToAdd);
+        AdultToAdd = new Adult();
+    }
+
 }

@@ -9,15 +9,12 @@ namespace FileData
     public class FileContext
     {
         public IList<Family> Families { get; private set; }
-        public IList<Adult> Adults { get; private set; }
-
-        private readonly string familiesFile = "C:/Users/N_i_v/RiderProjects/DNPAssignment1/DNPAssignment1/families.json";
-        private readonly string adultsFile = "C:/Users/N_i_v/RiderProjects/DNPAssignment1/DNPAssignment1/adults.json";
-
+        
+        private readonly string familiesFile = "families.json";
+        
         public FileContext()
         {
             Families = File.Exists(familiesFile) ? ReadData<Family>(familiesFile) : new List<Family>();
-            Adults = File.Exists(adultsFile) ? ReadData<Adult>(adultsFile) : new List<Adult>();
         }
 
         private IList<T> ReadData<T>(string s)
@@ -39,16 +36,7 @@ namespace FileData
             {
                 outputFile.Write(jsonFamilies);
             }
-
-            // storing persons
-            string jsonAdults = JsonSerializer.Serialize(Adults, new JsonSerializerOptions
-            {
-                WriteIndented = true
-            });
-            using (StreamWriter outputFile = new StreamWriter(adultsFile, false))
-            {
-                outputFile.Write(jsonAdults);
-            }
+            
         }
     }
 }
