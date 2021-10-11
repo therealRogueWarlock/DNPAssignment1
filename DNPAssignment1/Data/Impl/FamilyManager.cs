@@ -36,8 +36,8 @@ namespace Blazor_Authentication.Data.Impl
        {
            Family familyToUpdate = _fileContext.Families.First(f =>
                f.StreetName.Equals(family.StreetName) && f.HouseNumber.Equals(family.HouseNumber));
-           familyToUpdate.HouseNumber = 3;
-           familyToUpdate.StreetName = "WOWE";
+           //familyToUpdate.HouseNumber = 3;
+           //familyToUpdate.StreetName = "WOWE";
            _fileContext.SaveChanges();
        }
 
