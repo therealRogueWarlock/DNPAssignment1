@@ -1,0 +1,153 @@
+﻿@namespace AdultContentComponent 
+
+@using Models
+@using Blazor_Authentication.Data
+@inject IFamilyManager familyManager
+@inject NavigationManager navigationManager
+
+
+@if (_adultsToShow == null)
+{
+    <p>
+        <em>Loading...</em>
+    </p>
+}
+else if (!_adultsToShow.Any())
+{
+    <p>
+        <em>No families exist, please add families to our beautiful system</em>
+    </p>
+}
+else
+{
+    <h3>AdultContent</h3>
+
+
+    <h1>Filter Adults</h1>
+    <p>
+        Filter by Family Name: <input type="text" @oninput="@((arg) => FilterByFamilyName(arg))" style="width:50px"/>
+    </p>
+    <p>
+        Filter by First Name: <input type="text" @oninput="@((arg) => FilterByFirstName(arg))" style="width:50px"/>
+    </p>
+    <p>
+        Filter by Job Name: <input type="text" @oninput="@((arg) => FilterByJobTitle(arg))" style="width:50px"/>
+    </p>
+
+    <table class="table">
+        <thead>
+        <tr>
+            <th>JobTitle</th>
+            <th>First name</th>
+            <th>Family name</th>
+            <AuthorizeView>
+                <th>Delete</th>
+                <th>Edit</th>
+            </AuthorizeView>
+        </tr>
+        </thead>
+        <tbody>
+
+
+        @foreach (var adult in _adultsToShow)
+        {
+            <tr>
+                <td>@adult.Job.JobTitle</td>
+                <td>@adult.FirstName</td>
+                <td>@adult.LastName</td>
+                <td>
+                    <button @onclick="@(() => EditAdult(adult.Id))">
+                        <i class="oi oi-pencil" style="color:blue"/>
+                    </button>
+                </td>
+                <td>
+                    <button @onclick="@(() => RemoveAdult(adult.Id))">
+                        <i class="oi oi-trash" style="color:red"/>
+                    </button>
+                </td>
+            </tr>
+        }
+
+        </tbody>
+    </table>
+}
+
+@code {
+
+    private IList<Adult> _adults;
+    private IList<Adult> _adultsToShow;
+
+    private string filterByJobTitle;
+    private string filterByFirstName;
+    private string filterByLastName;
+
+    protected override async Task OnInitializedAsync()
+    {
+        _adults = familyManager.GetAdults();
+        _adultsToShow = _adults;
+    }
+
+    private void FilterByJobTitle(ChangeEventArgs changeEventArgs)
+    {
+        try
+        {
+            filterByJobTitle = changeEventArgs.Value.ToString();
+        }
+        catch (Exception e)
+        {
+            Console.WriteLine("Fuck jeg fejlede i FilterByJobTitle :((");
+        }
+
+        ExecuteFilterAdults();
+    }
+
+    private void FilterByFirstName(ChangeEventArgs changeEventArgs)
+    {
+        try
+        {
+            filterByFirstName = changeEventArgs.Value.ToString();
+        }
+        catch (Exception e)
+        {
+            Console.WriteLine("Fuck jeg fejlede i FilterByFirstName :((");
+        }
+
+        ExecuteFilterAdults();
+    }
+
+    private void FilterByFamilyName(ChangeEventArgs changeEventArgs)
+    {
+        try
+        {
+            filterByLastName = changeEventArgs.Value.ToString();
+        }
+        catch (Exception e)
+        {
+            Console.WriteLine("Fuck jeg fejlede i FilterByFamilyName :((");
+        }
+
+        ExecuteFilterAdults();
+    }
+
+
+    private void ExecuteFilterAdults()
+    {
+        _adultsToShow = _adults.Where(f =>
+            (filterByLastName != null && f.LastName.ToLower().Contains(filterByLastName.ToLower()) || filterByLastName == null) &&
+            (filterByFirstName != null && f.FirstName.ToLower().Contains(filterByFirstName.ToLower()) || filterByFirstName == null) &&
+            (filterByJobTitle != null && f.Job.JobTitle.ToLower().Contains(filterByJobTitle.ToLower()) || filterByJobTitle == null)).ToList();
+    }
+
+    private void EditAdult(int adultId)
+    {
+        navigationManager.NavigateTo($"EditAdult/{adultId}");
+    }
+    
+    private void RemoveAdult(int adultId)
+    {
+        familyManager.RemoveAdult(adultId);
+    }
+    
+  
+
+}

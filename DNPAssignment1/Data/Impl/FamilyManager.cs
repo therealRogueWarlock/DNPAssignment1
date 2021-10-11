@@ -35,8 +35,6 @@ namespace Blazor_Authentication.Data.Impl
         {
             Family familyToUpdate = _fileContext.Families.First(f =>
                 f.FamilyId == family.FamilyId);
-            //familyToUpdate.HouseNumber = 3;
-            //familyToUpdate.StreetName = "WOWE";
             _fileContext.SaveChanges();
         }
         
@@ -44,6 +42,12 @@ namespace Blazor_Authentication.Data.Impl
         {
             return _fileContext.Families.FirstOrDefault(family =>
                 family.FamilyId == familyId);
+        }
+
+        public void RemoveAdult(int adultId)
+        {
+            GetAdults().Remove(GetAdult(adultId));
+            _fileContext.SaveChanges();
         }
 
         public IList<Adult> GetAdults()

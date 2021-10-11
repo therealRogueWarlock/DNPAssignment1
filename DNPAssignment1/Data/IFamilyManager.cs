@@ -10,10 +10,10 @@ namespace Blazor_Authentication.Data
         IList<Family> GetFamilies();
         void Update(Family family);
         Family GetFamily(int familyId);
-        
-        
-        
-        
+
+
+
+        void RemoveAdult(int adultId);
         IList<Adult> GetAdults();
         Adult GetAdult(int id);
 
