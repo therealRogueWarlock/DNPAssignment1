@@ -7,14 +7,13 @@ namespace Blazor_Authentication.Data.Impl
 {
     public class FamilyManager : IFamilyManager
     {
-
         private FileContext _fileContext;
 
         public FamilyManager()
         {
             _fileContext = new FileContext();
         }
-        
+
         public void AddFamily(Family family)
         {
             _fileContext.Families.Add(family);
@@ -27,24 +26,42 @@ namespace Blazor_Authentication.Data.Impl
             _fileContext.SaveChanges();
         }
 
-       public IList<Family> GetFamilies()
-       {
-           return _fileContext.Families;
-       }
+        public IList<Family> GetFamilies()
+        {
+            return _fileContext.Families;
+        }
 
-       public void Update(Family family)
-       {
-           Family familyToUpdate = _fileContext.Families.First(f =>
-               f.StreetName.Equals(family.StreetName) && f.HouseNumber.Equals(family.HouseNumber));
-           //familyToUpdate.HouseNumber = 3;
-           //familyToUpdate.StreetName = "WOWE";
-           _fileContext.SaveChanges();
-       }
+        public void Update(Family family)
+        {
+            Family familyToUpdate = _fileContext.Families.First(f =>
+                f.FamilyId == family.FamilyId);
+            //familyToUpdate.HouseNumber = 3;
+            //familyToUpdate.StreetName = "WOWE";
+            _fileContext.SaveChanges();
+        }
+        
+        public Family GetFamily(int familyId)
+        {
+            return _fileContext.Families.FirstOrDefault(family =>
+                family.FamilyId == familyId);
+        }
 
-       public Family Get(string streetName, int houseNumber)
-       {
-           return _fileContext.Families.FirstOrDefault(f =>
-               f.StreetName.Equals(streetName) && f.HouseNumber.Equals(houseNumber));
-       }
+        public IList<Adult> GetAdults()
+        {
+            List<Adult> _adults = new();
+
+            foreach (var family in _fileContext.Families)
+            {
+                _adults.AddRange(family.Adults);
+            }
+
+            return _adults;
+        }
+
+        public Adult GetAdult(int id)
+        {
+            return GetAdults().FirstOrDefault(adult =>
+                adult.Id == id);
+        }
     }
 }

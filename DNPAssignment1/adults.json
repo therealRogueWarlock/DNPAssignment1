@@ -1,6 +1,6 @@
 [
   {
-    "JobTitle": null,
+    "Job": null,
     "Id": 0,
     "FirstName": "Yasmine",
     "LastName": "Baxter",
@@ -12,7 +12,7 @@
     "Sex": "F"
   },
   {
-    "JobTitle": null,
+    "Job": null,
     "Id": 1,
     "FirstName": "Lyla",
     "LastName": "Humphrey",
@@ -24,7 +24,7 @@
     "Sex": "F"
   },
   {
-    "JobTitle": null,
+    "Job": null,
     "Id": 2,
     "FirstName": "Samara",
     "LastName": "Humphrey",
@@ -36,7 +36,7 @@
     "Sex": "F"
   },
   {
-    "JobTitle": null,
+    "Job": null,
     "Id": 3,
     "FirstName": "Chaya",
     "LastName": "Mcclure",
@@ -48,7 +48,7 @@
     "Sex": "F"
   },
   {
-    "JobTitle": null,
+    "Job": null,
     "Id": 4,
     "FirstName": "Ophelia",
     "LastName": "Nathan",
@@ -60,7 +60,7 @@
     "Sex": "F"
   },
   {
-    "JobTitle": null,
+    "Job": null,
     "Id": 5,
     "FirstName": "Soham",
     "LastName": "Fitzgerald",
@@ -72,7 +72,7 @@
     "Sex": "M"
   },
   {
-    "JobTitle": null,
+    "Job": null,
     "Id": 6,
     "FirstName": "Anastasia",
     "LastName": "Fitzgerald",
@@ -84,7 +84,7 @@
     "Sex": "F"
   },
   {
-    "JobTitle": null,
+    "Job": null,
     "Id": 7,
     "FirstName": "Cataleya",
     "LastName": "Mcintyre",
@@ -96,7 +96,7 @@
     "Sex": "F"
   },
   {
-    "JobTitle": null,
+    "Job": null,
     "Id": 8,
     "FirstName": "Andi",
     "LastName": "Wells",
@@ -108,7 +108,7 @@
     "Sex": "F"
   },
   {
-    "JobTitle": null,
+    "Job": null,
     "Id": 9,
     "FirstName": "Genevieve",
     "LastName": "Cruz",
@@ -120,7 +120,7 @@
     "Sex": "F"
   },
   {
-    "JobTitle": null,
+    "Job": null,
     "Id": 10,
     "FirstName": "Lester",
     "LastName": "Cruz",
@@ -132,7 +132,7 @@
     "Sex": "M"
   },
   {
-    "JobTitle": null,
+    "Job": null,
     "Id": 11,
     "FirstName": "Zahra",
     "LastName": "Salt",
@@ -144,7 +144,7 @@
     "Sex": "F"
   },
   {
-    "JobTitle": null,
+    "Job": null,
     "Id": 12,
     "FirstName": "Zavier",
     "LastName": "Huffman",
@@ -156,7 +156,7 @@
     "Sex": "M"
   },
   {
-    "JobTitle": null,
+    "Job": null,
     "Id": 13,
     "FirstName": "Arley",
     "LastName": "Vaughn",
@@ -168,7 +168,7 @@
     "Sex": "M"
   },
   {
-    "JobTitle": null,
+    "Job": null,
     "Id": 14,
     "FirstName": "Isiah",
     "LastName": "Esparza",

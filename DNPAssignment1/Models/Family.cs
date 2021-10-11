@@ -14,6 +14,8 @@ namespace Models
         [Range(1, int.MaxValue, ErrorMessage = "Please enter a value bigger than {1}")]
         public int HouseNumber { get; set; }
         
+        public int FamilyId { get; set; }
+        
         public List<Adult> Adults { get; set; }
         public List<Child> Children { get; set; }
         public List<Pet> Pets { get; set; }
@@ -21,7 +23,6 @@ namespace Models
         public Family()
         {
             Adults = new List<Adult>();
-          
         }
 
         public string GetFamilyName()

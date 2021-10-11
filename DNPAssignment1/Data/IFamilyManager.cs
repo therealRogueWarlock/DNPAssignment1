@@ -9,7 +9,13 @@ namespace Blazor_Authentication.Data
         void RemoveFamily(Family family);
         IList<Family> GetFamilies();
         void Update(Family family);
-        Family Get(string streetName, int houseNumber);
+        Family GetFamily(int familyId);
+        
+        
+        
+        
+        IList<Adult> GetAdults();
+        Adult GetAdult(int id);
 
 
     }

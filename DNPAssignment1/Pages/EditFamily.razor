@@ -1,11 +1,11 @@
-﻿@page "/Edit/{StreetName}/{HouseNumber:int}"
+﻿@page "/EditFamily/{FamilyId:int}"
 @using Blazor_Authentication.Data
 @using Models
 @inject IFamilyManager familyManager
 @inject NavigationManager navigationManager
 
 
-<h3>Edit family with: @StreetName @HouseNumber</h3>
+<h3>Edit family: @StreetName @HouseNumber</h3>
 
 @if (familyToEdit == null)
 {
@@ -28,16 +28,16 @@ else
 
 @code {
     [Parameter]
-    public string StreetName { get; set; }
-
-    [Parameter]
-    public int HouseNumber { get; set; }
+    public int FamilyId { get; set; }
+    
+    private string StreetName { get; set; }
+    private int HouseNumber { get; set; }
 
     private Family familyToEdit;
 
     protected override async Task OnInitializedAsync()
     {
-        familyToEdit = familyManager.Get(StreetName, HouseNumber);
+        familyToEdit = familyManager.GetFamily(FamilyId);
     }
 
     private void Save()
